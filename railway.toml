@@ -1,11 +1,12 @@
 [build]
-command = "npm run build"
+command = "cd backend && npm install"
 
 [deploy]
-startCommand = "cd backend && npm start"   
-healthcheckPath = "/"
-healthcheckTimeout = 30
+startCommand = "cd backend && npm start"
+healthcheckPath = "/health"
+healthcheckTimeout = 60
 restartPolicyType = "ON_FAILURE"
 
 [variables]
 NODE_ENV = "production"
+PORT = "5000"
