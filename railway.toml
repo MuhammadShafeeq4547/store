@@ -1,12 +1,11 @@
 [build]
-command = "npm install && cd backend && npm install"  
+command = "cd backend && npm install"
 
 [deploy]
 startCommand = "cd backend && npm start"
 healthcheckPath = "/"
-healthcheckTimeout = 90 
+healthcheckTimeout = 120
 restartPolicyType = "ON_FAILURE"
 
 [variables]
 NODE_ENV = "production"
-# PORT automatically set by Railway
