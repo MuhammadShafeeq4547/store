@@ -1,8 +1,0 @@
-[deploy]
-startCommand = "cd backend && node server.js"
-healthcheckPath = "/"
-healthcheckTimeout = 120
-restartPolicyType = "ON_FAILURE"
-
-[variables]
-NODE_ENV = "production"
