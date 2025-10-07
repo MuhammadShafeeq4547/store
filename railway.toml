@@ -3,7 +3,7 @@ command = "cd backend && npm install"
 
 [deploy]
 startCommand = "cd backend && npm start"
-healthcheckPath = "/health"
+healthcheckPath = "/" 
 healthcheckTimeout = 60
 restartPolicyType = "ON_FAILURE"
 
