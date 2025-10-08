@@ -1,12 +1,6 @@
 [build]
 builder = "NIXPACKS"
-
-[deploy]
 buildCommand = "cd backend && npm install"
-startCommand = "cd backend && node server.js"
 
-[env]
-NODE_VERSION = "18"
-
-
-
+[start]
+command = "cd backend && node server.js"
