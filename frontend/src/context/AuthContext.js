@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
   // Fetch wishlist data from the backend
   const fetchWishlist = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/users/wishlist", {
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/wishlist`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setWishlist(response.data); // Update wishlist state
@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
   // Register new user
   const registerUser = async (name, email, password) => {
     try {
-      const response = await axios.post("http://localhost:5000/api/users/register", {
+  const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/register`, {
         name,
         email,
         password,
@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }) => {
     console.log(email);
     
     try {
-      const response = await axios.post("http://localhost:5000/api/users/login", {
+  const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/login`, {
         email,
         password,
       });
@@ -85,7 +85,7 @@ export const AuthProvider = ({ children }) => {
   // Fetch cart items from the backend
   const fetchCart = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/cart", {
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cart`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       const items = response.data.items || [];
@@ -101,7 +101,7 @@ export const AuthProvider = ({ children }) => {
     
     try {
       await axios.post(
-        "http://localhost:5000/api/cart",
+  `${process.env.REACT_APP_API_URL}/api/cart`,
         { productId, quantity },
         { headers: { Authorization: `Bearer ${user.token}` } }
       );
@@ -114,7 +114,7 @@ export const AuthProvider = ({ children }) => {
   const updateCart = async (productId, quantityChange) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/cart",
+  `${process.env.REACT_APP_API_URL}/api/cart`,
         { productId, quantity: quantityChange },
         { headers: { Authorization: `Bearer ${user.token}` } }
       );
@@ -126,7 +126,7 @@ export const AuthProvider = ({ children }) => {
   
   const removeItem = async (productId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/cart/${productId}`, {
+  await axios.delete(`${process.env.REACT_APP_API_URL}/api/cart/${productId}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       await fetchCart(); // Ensure the cart is updated immediately
@@ -151,7 +151,7 @@ export const AuthProvider = ({ children }) => {
   const addToWishlist = async (productId) => {
     try {
       await axios.post(
-        `http://localhost:5000/api/products/${productId}/wishlist`,
+  `${process.env.REACT_APP_API_URL}/api/products/${productId}/wishlist`,
         {},
         { headers: { Authorization: `Bearer ${user.token}` } }
       );
@@ -164,7 +164,7 @@ export const AuthProvider = ({ children }) => {
   // Remove product from wishlist
   const removeFromWishlist = async (productId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/products/${productId}/wishlist`, {
+  await axios.delete(`${process.env.REACT_APP_API_URL}/api/products/${productId}/wishlist`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       fetchWishlist();

@@ -22,7 +22,7 @@ const TrackMyOrder = () => {
     setError('');
     try {
       const token = getAuthToken();
-      const response = await fetch('http://localhost:5000/api/orders/my-orders', {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/my-orders`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -49,7 +49,7 @@ const TrackMyOrder = () => {
   const getOrderById = async (orderId) => {
     try {
       const token = getAuthToken();
-      const response = await fetch(`http://localhost:5000/api/orders/${orderId}`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/${orderId}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -75,7 +75,7 @@ const TrackMyOrder = () => {
     setCancelLoading(orderId);
     try {
       const token = getAuthToken();
-      const response = await fetch(`http://localhost:5000/api/orders/${orderId}/cancel`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/${orderId}/cancel`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

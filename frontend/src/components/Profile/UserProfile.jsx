@@ -50,7 +50,7 @@ const UserProfile = () => {
   const fetchUserStats = async () => {
     try {
       // Fetch user orders to calculate statistics
-      const ordersResponse = await fetch('http://localhost:5000/api/orders/my-orders', {
+  const ordersResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/orders/my-orders`, {
         headers: { 
           'Authorization': `Bearer ${user.token}`,
           'Content-Type': 'application/json'
@@ -95,7 +95,7 @@ const UserProfile = () => {
         }
 
         // Fetch user profile
-        const response = await fetch('http://localhost:5000/api/users/profile', {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/profile`, {
           headers: { 
             'Authorization': `Bearer ${user.token}`,
             'Content-Type': 'application/json'

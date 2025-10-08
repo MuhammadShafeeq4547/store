@@ -15,7 +15,7 @@ const Profile = () => {
           navigate('/login');
           return;
         }
-        const response = await axios.get('http://localhost:5000/api/users/profile', {
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/profile`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

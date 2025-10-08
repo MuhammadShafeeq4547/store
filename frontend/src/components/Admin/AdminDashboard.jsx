@@ -25,7 +25,7 @@ const AdminDashboard = () => {
 
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/users', {
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users`, {
           headers: { Authorization: `Bearer ${user.token}` },
         });
         setUsers(response.data);
@@ -36,7 +36,7 @@ const AdminDashboard = () => {
 
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/products', {
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/products`, {
           headers: { Authorization: `Bearer ${user.token}` },
         });
         setProducts(response.data.products);
@@ -60,7 +60,7 @@ const AdminDashboard = () => {
   const deleteUser = async (id) => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/users/${id}`, {
+  await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/${id}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setUsers(prevUsers => prevUsers.filter((user) => user._id !== id));
@@ -75,7 +75,7 @@ const AdminDashboard = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:5000/api/products', newProduct, {
+  const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/products`, newProduct, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setProducts(prevProducts => [...prevProducts, response.data]);
@@ -101,7 +101,7 @@ const AdminDashboard = () => {
   const updateProduct = async () => {
     if (!editingProduct) return;
     try {
-      const response = await axios.put(`http://localhost:5000/api/products/${editingProduct._id}`, editingProduct, {
+  const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/products/${editingProduct._id}`, editingProduct, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setProducts(prevProducts =>
@@ -116,7 +116,7 @@ const AdminDashboard = () => {
   const deleteProduct = async (id) => {
     if (!window.confirm('Are you sure you want to delete this product?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`, {
+  await axios.delete(`${process.env.REACT_APP_API_URL}/api/products/${id}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setProducts(prevProducts => prevProducts.filter((p) => p._id !== id));

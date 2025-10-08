@@ -35,7 +35,7 @@ const AdminDashboard = () => {
   const [ordersPerPage] = useState(10);
   const [pagination, setPagination] = useState({});
 
-  const API_BASE = 'http://localhost:5000/api/admin';
+  const API_BASE = `${process.env.REACT_APP_API_URL}/api/admin`;
   
 
   const getAuthHeaders = () => ({

@@ -18,7 +18,7 @@ const ProductDetail = () => {
   // Fetch product details
   const fetchProduct = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/products/${id}`);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/${id}`);
       setProduct(response.data);
     } catch (error) {
       console.error("Product Detail Error:", error.response?.data?.message || error);
@@ -54,7 +54,7 @@ const ProductDetail = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/products/${id}/reviews`,
+  `${process.env.REACT_APP_API_URL}/api/products/${id}/reviews`,
         { rating, comment },
         {
           headers: {

@@ -118,7 +118,7 @@ const ProductDetail = () => {
   const fetchProduct = useCallback(async () => {
     try {
       setLoading(prev => ({ ...prev, page: true }));
-      const response = await axios.get(`http://localhost:5000/api/products/${id}`);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/${id}`);
       setProduct(response.data);
     } catch (error) {
       console.error("Product Detail Error:", error);
@@ -248,7 +248,7 @@ const ProductDetail = () => {
       setLoading(prev => ({ ...prev, review: true }));
       
       const response = await axios.post(
-        `http://localhost:5000/api/products/${id}/reviews`,
+  `${process.env.REACT_APP_API_URL}/api/products/${id}/reviews`,
         { rating, comment: comment.trim() },
         {
           headers: {

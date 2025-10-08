@@ -103,7 +103,7 @@ const UpdateProfile = () => {
       }
 
       const response = await axios.put(
-        'http://localhost:5000/api/users/profile',
+  `${process.env.REACT_APP_API_URL}/api/users/profile`,
         dataToSend,
         {
           headers: { 

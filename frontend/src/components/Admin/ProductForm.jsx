@@ -9,7 +9,7 @@ const ProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/products', { name, description, price });
+  await axios.post(`${process.env.REACT_APP_API_URL}/api/products`, { name, description, price });
     } catch (error) {
       console.error('Product Form Error:', error.response?.data?.message || error);
     }

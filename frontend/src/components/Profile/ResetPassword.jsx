@@ -35,7 +35,7 @@ const ResetPassword = () => {
 
   const verifyToken = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/users/verify-reset-token/${token}`);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/verify-reset-token/${token}`);
       if (response.data.success) {
         setTokenValid(true);
       }
@@ -117,7 +117,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/users/reset-password/${token}`,
+  `${process.env.REACT_APP_API_URL}/api/users/reset-password/${token}`,
         {
           password: formData.password,
           confirmPassword: formData.confirmPassword

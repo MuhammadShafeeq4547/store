@@ -140,7 +140,7 @@ const ProductList = () => {
   const { toasts, showToast, removeToast } = useToast();
 
   // API Base URL
-  const API_BASE = 'http://localhost:5000/api/products';
+  const API_BASE = `${process.env.REACT_APP_API_URL}/api/products`;
 
   // Custom debounce hook with proper cleanup
   const useDebounce = (value, delay) => {
@@ -509,7 +509,7 @@ const ProductList = () => {
       } else {
         // Fallback to direct API call
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:5000/api/cart/add', {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/cart/add`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
