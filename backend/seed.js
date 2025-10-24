@@ -1129,7 +1129,7 @@ const productsData = [
 const seedProducts = async () => {
   try {
     // Connect to MongoDB
-    await mongoose.connect("mongodb+srv://Shafeeq:724@cluster0.3cohtbc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(()=>{
+    await mongoose.connect(process.env.MONGO_URI).then(()=>{
       console.log('Connected to MongoDB');
     })
     // Clear existing products
